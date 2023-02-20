@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>遊戲王 Duel !!!</title>
+  <style>
+	body{
+    background:url('./img/123.jpg');
+	background-size: cover;
+	}
+  
+    .wrap{
+      width:1000px;
+      height: 676px;
+      margin:20px auto;
+      background:url('./img/124.gif');
+      padding:20px;
+      position: relative;
+    }
+    .card{
+      width: 86px;
+      height: 119px;
+      float:left;
+      text-align: center;
+      position:relative;
+      margin:5px;
+    }
+    .cardMask{
+      width: 86px;
+      height: 119px;
+      position: absolute;
+      background:rgba(0,0,0,0.5);
+      display:none;
+    }
+    .back{
+      background:url('./img/back.png') no-repeat;
+      background-size: contain;
+      width:100%;
+      height: 100%;
+      position:absolute;
+
+    }
+    .front{
+      width:100%;
+      height: 100%;
+      position:absolute;
+      display:none;
+    }
+
+    #wall{
+      width: 900px;
+      height: 580px;
+      position:absolute;
+      left:50px;
+      top:50px;
+      display: none;
+    }
+  @keyframes opa{
+    from{
+      filter:opacity(100%);
+    }
+    to{
+      filter:opacity(0%);
+    }
+  }
+  
+  #tiktok{
+    width:0px;
+    height: 0px;
+    background:red;
+    border:0px solid darkgreen;
+    margin:0px auto;
+  }
+  #counter{
+    width:0%;
+    height:0%;
+    background:white;
+    float:right;
+  }
+  .mask{
+    width: 100vw;
+    height:100vh;
+    position:absolute;
+    top:0;
+    z-index: 99;
+    background: rgba(0,0,0,0.5)
+  }
+  .intro{
+    width: 500px;
+    height:353px;
+    background:rgba(255,255,255,0.7);
+    white-space: pre-line;
+    margin:100px auto 0px auto;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 40px;
+    font-family: "微軟正黑體";
+    padding:20px;
+  }
+  .intro button{
+    font-size:20px;
+    display: block;
+    margin:70px auto 0 auto;
+    padding:10px;
+  }
+   #player1{
+    position: fixed;
+	font-family:fantasy;
+	font-size:50px;
+    bottom: 50px;
+    left: 75px;
+    width: 165px;
+    background:url('./img/12345.jpg');
+  }
+  #player2{
+    position: fixed;
+	font-family:fantasy;
+	color:white;
+	font-size:50px;
+    bottom: 50px;
+    right: 70px;
+    width: 170px;
+    background:url('./img/1234.jpg');
+  }
+  #face1{
+	background:rgba(255,255,255,0.7);
+	position: fixed;
+	font-family:DFKai-sb;
+	font-size:30px;
+    bottom: 300px;
+    left: 3px;
+    width: 250px;
+	height: 400px;
+  }
+  #face2{
+	background:rgba(255,255,255,0.7);
+	position: fixed;
+	font-family:DFKai-sb;
+	font-size:30px;
+    bottom: 300px;
+    right: 3px;
+    width: 250px;
+	height: 400px;
+  }
+  #Description{
+	font-size:15px;
+  }
+  
+  </style>
+</head>
+<body>
+    <p id="player1">"player1: "8000</p>
+	<p id="player2">"player2: "8000</p>
+	<div id="face1">
+		<p></p>
+		<p id = "Description"></p>
+		<p></p>
+	</div>
+	<div id="face2" >
+		<p></p>
+		<p id = "Description"></p>
+		<p></p>
+	</div>
+ <div class="wrap">
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+  <div class="card"><div class="front"></div><div class="back"></div></div>
+
+
+  <div id="wall"></div>
+ </div>
+ <div id="tiktok"><div id="counter"></div></div>
+<div  class="mask">
+  <div class="intro">
+    遊戲方式：
+      1.雙方各自翻開一張牌
+      2.比較各自翻開牌的攻擊力
+      3.攻擊力較大者可以攻擊 生命值先歸零者為輸
+    <button onclick="startGame()">開始遊戲</button>
+
+  </div>
+</div>
+<script src="cardid.js"></script>
+</body>
+</html>
+<script>
+
+
+//變數設定
+let cards=document.getElementsByClassName('card')    //取得所有的卡牌元素
+let fronts=document.getElementsByClassName('front')  //取得所有的卡面元素
+let backs=document.getElementsByClassName('back')    //取得所有背面元素
+let gap=[1,1];          //用來計算卡牌翻面時間的基準值，最多同時兩張牌，所以以陣列方式存放兩個值
+let frames=[0,0];       //用來計算翻牌期間的幀數，作為條件判斷的值，最多同時兩張牌，所以以陣列方式存放兩個值
+let ani=new Array();    //存放動畫執行時的計時物件
+let shows=new Array();  //存放被翻牌的元素物件
+let cardData=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49]; //原始牌組
+let gameData=new Array(40);   //用來存放要放在遊戲中的牌組內容，5種樣式，10個元素
+//let counterWidth=100;  //計時條長度
+//let timer=60000        //倒數時間(亳秒)
+//let counterHandle      //計時條
+let complete=0;
+let player1hp = 8000;
+let player2hp = 8000;
+let music = new Audio("music/gamestartbgm.mp3");
+let music1 = new Audio("music/sum.mp3");
+let music2 = new Audio("music/003.mp3");
+let music3 = new Audio("music/sungod.mp3");
+let music4 = new Audio("music/skygod.mp3");
+let face1 = document.getElementById('face1');
+let face2 = document.getElementById('face2');
+let sungod1=0;    //太陽神的翼神龍技能加攻擊的變數for player1
+let sungod2=0;    //太陽神的翼神龍技能加攻擊的變數for player2
+let skygod1=0;    //天空龍技能加攻擊的變數for player1
+let skygod2=0;    //天空龍技能加攻擊的變數for player2
+
+
+//遊戲啟動
+function startGame(){
+	music.currentTime=0;
+	music.play();
+  document.getElementsByClassName('mask')[0].style.display="none";
+
+  initial();   //初始化全域變數及資料
+
+  shuffle(cardData)  //對原始資料進行洗牌
+	
+  //從洗牌後的資料陣列取出多筆資料並送入遊戲卡牌陣列
+  for(i=0;i<40;i++){
+    let p=cardData.pop();
+    gameData[i]=p
+  }
+
+  shuffle(gameData)   //對遊戲資料進行洗牌
+  
+  //設定卡牌的資料內及顯示圖片
+  for(i=0;i<fronts.length;i++){
+    fronts[i].setAttribute("data-type",gameData[i]); //設定資料內容
+    fronts[i].style.background="url('./img/"+gameData[i]+".png')"; //設定背景圖
+  }
+
+  //設定卡牌的點擊偵測事件
+  for(i=0;i<cards.length;i++){
+
+    //卡牌點擊事件綁定函式，發生onclick時才會去執行
+    cards[i].onclick=function(){   
+
+      gap[0]=1;
+      document.getElementById("wall").style.display="block";  //把透明牆打開，以防誤點
+
+      //判斷陣列中是否有重覆的元素以及元素是否是己經完成的牌卡
+      if(shows.indexOf(this)==-1 && this.style.animationName!="opa"){
+        shows.push(this);
+        ani[0]=setInterval(fade,25,this,0)
+        frames[0]=0
+      }else{
+        document.getElementById("wall").style.display="none";
+      }
+	  music1.currentTime=0;
+	  music1.play();
+	  if(shows[0].childNodes[0].dataset.type==18){
+		music.pause();
+		music3.play();
+	  }
+    }
+  }
+  //counterHandle=setInterval(timeCounter,125)    //啟動計時器
+}
+
+//初始化相關資料函式
+function initial(){
+  player1hp = 8000;
+  player2hp = 8000;
+  document.getElementById('player1').innerHTML = "player1: "+player1hp;
+  document.getElementById('player2').innerHTML = "player2: "+player2hp;
+  gap=[1,1];       
+  frames=[0,0];    
+  ani.length=0;    
+  shows.length=0;
+  cardData=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49];  
+  gameData.length=0;
+  counterWidth=100; 
+  timer=60000;
+  complete=0;
+  document.getElementById('counter').style.width="100%";
+  sungod1=0;    
+  sungod2=0;
+  skygod1=0;    
+  skygod2=0;
+  card_pool[20].attack=0;
+  card_pool[6].attack=500;
+
+  //將卡牌元素中的style屬性都先移除
+  for(i=0;i<cards.length;i++){
+    cards[i].removeAttribute('style');
+    cards[i].childNodes[0].removeAttribute('style');
+    cards[i].childNodes[1].removeAttribute('style');
+  }
+}
+
+
+function result(){
+  let com=complete;
+  let str="";
+  if(complete==40){
+    if(player1hp > player2hp){
+    str="遊戲結果\n恭喜玩家1贏得遊戲\n<button onclick='startGame()'>繼續遊戲</button>";
+    }
+	else if(player1hp<player2hp){
+		str="遊戲結果\n恭喜玩家2贏得遊戲\n<button onclick='startGame()'>繼續遊戲</button>";
+	}
+	//把結果字串寫入提示顯示區
+	document.getElementsByClassName('intro')[0].innerHTML=str;
+    document.getElementsByClassName('mask')[0].style.display="block";
+  }
+  if (player1hp <= 0){
+    str="遊戲結果\n恭喜玩家2贏得遊戲\n<button onclick='startGame()'>繼續遊戲</button>";
+	//把結果字串寫入提示顯示區
+	document.getElementsByClassName('intro')[0].innerHTML=str;
+	document.getElementsByClassName('mask')[0].style.display="block";
+  }
+  else if (player2hp <= 0){
+	str="遊戲結果\n恭喜玩家1贏得遊戲\n<button onclick='startGame()'>繼續遊戲</button>";
+	//把結果字串寫入提示顯示區
+	document.getElementsByClassName('intro')[0].innerHTML=str;
+	document.getElementsByClassName('mask')[0].style.display="block";
+	
+  }
+  /*if(player1hp <= 1000 || player2hp <= 1000){
+	music.pause();
+	music3.pause();
+	music4.currentTime=0;
+	music4.play();
+  }*/
+
+
+}
+
+function cardeffect(){
+	let com=complete;
+	let str="";
+	if(shows[0].childNodes[0].dataset.type==7){
+		str="遊戲結果\n由於玩家1抽到黑暗大法師,本局由玩家1直接勝利\n<button onclick='startGame()'>繼續遊戲</button>";
+		document.getElementsByClassName('intro')[0].innerHTML=str;
+		document.getElementsByClassName('mask')[0].style.display="block";
+	}
+	else if(shows[1].childNodes[0].dataset.type==7){
+		str="遊戲結果\n由於玩家2抽到黑暗大法師,本局由玩家2直接勝利\n<button onclick='startGame()'>繼續遊戲</button>";
+		document.getElementsByClassName('intro')[0].innerHTML=str;
+		document.getElementsByClassName('mask')[0].style.display="block";
+	}
+	if(shows[0].childNodes[0].dataset.type==3){
+		player2hp=player2hp-1000;
+	}
+	else if(shows[1].childNodes[0].dataset.type==3){
+		player1hp=player1hp-1000;
+	}
+	if(shows[0].childNodes[0].dataset.type==18){
+		sungod1+=player1hp-100;
+		player1hp=100;
+		card_pool[18].attack+=card_pool[18].attack+sungod1;
+	}
+	else if(shows[1].childNodes[0].dataset.type==18){
+		sungod2+=player2hp-100;
+		player2hp=100;
+		card_pool[18].attack+=card_pool[18].attack+sungod2;
+	}
+	if(shows[0].childNodes[0].dataset.type==20){
+		skygod1+=complete*500;
+		card_pool[20].attack=skygod1;
+	}
+	else if(shows[1].childNodes[0].dataset.type==20){
+		skygod2+=complete*500;
+		card_pool[20].attack=skygod2;
+	}
+	if(shows[0].childNodes[0].dataset.type==21){
+		player1hp=player1hp+2000;
+	}
+	else if(shows[1].childNodes[0].dataset.type==21){
+		player2hp=player2hp+2000;
+	}
+	if(shows[0].childNodes[0].dataset.type==31){
+		player1hp=player1hp-1000;
+	}
+	else if(shows[1].childNodes[0].dataset.type==31){
+		player2hp=player2hp-1000;
+	}
+	if(shows[0].childNodes[0].dataset.type==6){
+		card_pool[6].attack += 500;
+	}
+	else if(shows[1].childNodes[0].dataset.type==6){
+		card_pool[6].attack += 500;
+	}
+	
+}
+
+//檢查牌面是否相同函式，相同則透明，不同則翻轉回去
+function chk(){
+  
+  cardeffect();//卡牌效果判定,如果有的話啦
+  if(card_pool[shows[0].childNodes[0].dataset.type].attack-card_pool[shows[1].childNodes[0].dataset.type].attack>0){
+	  console.log('a');
+	  player2hp-=card_pool[shows[0].childNodes[0].dataset.type].attack-card_pool[shows[1].childNodes[0].dataset.type].attack;
+	  music2.currentTime=0;
+	  music2.play();
+	  
+  }
+  else if(card_pool[shows[0].childNodes[0].dataset.type].attack-card_pool[shows[1].childNodes[0].dataset.type].attack<0){
+	  console.log('b');
+	  player1hp+=card_pool[shows[0].childNodes[0].dataset.type].attack-card_pool[shows[1].childNodes[0].dataset.type].attack;
+	  music2.currentTime=0;
+	  music2.play();
+	  /*if(shows[1].childNodes[0].dataset.type==18){
+		music.pause();
+		music3.currentTime=0;
+		music3.play();
+	  }*/
+	
+  }
+  
+  complete+=2;
+   result();
+   shows[0].style.animation="opa 500ms ease forwards";
+   shows[1].style.animation="opa 500ms ease forwards";
+   document.getElementById("wall").style.display="none";
+   shows.length=0;
+   document.getElementById('player1').innerHTML = "player1: "+ player1hp;
+   document.getElementById('player2').innerHTML = "player2: "+ player2hp;
+}
+
+//翻牌函式
+function fade(obj,d){
+	
+  //判定翻轉到一半時，交換要顯示的牌面內容
+  if(frames[d]==10){
+		if(shows[0]){
+			face1.children[0].innerHTML =  card_pool[shows[0].childNodes[0].dataset.type].name;
+			face1.children[1].innerHTML = "描述:" + card_pool[shows[0].childNodes[0].dataset.type].CardDescription;
+			face1.children[2].innerHTML = "攻擊力:" + card_pool[shows[0].childNodes[0].dataset.type].attack;
+		}
+		if(shows[1]){
+			face2.children[0].innerHTML = card_pool[shows[1].childNodes[0].dataset.type].name;
+			face2.children[1].innerHTML = "描述:" + card_pool[shows[1].childNodes[0].dataset.type].CardDescription;
+			face2.children[2].innerHTML = "攻擊力:" + card_pool[shows[1].childNodes[0].dataset.type].attack;
+		}
+      if(obj.childNodes[0].style.display=="none" || obj.childNodes[0].style.display=="" ){
+          obj.childNodes[1].style.display="none";
+          obj.childNodes[0].style.display="block";
+        }else{
+          obj.childNodes[1].style.display="block";
+          obj.childNodes[0].style.display="none";
+        }      
+    }
+
+  //根據不同的幀數來決定要進行的動作  
+  if(frames[d]>=20){
+    if(shows.length<2){
+      document.getElementById("wall").style.display="none";
+    }else{
+      document.getElementById("wall").style.display="block";
+      setTimeout(chk,1000);
+    }
+    clearInterval(ani[d])
+    frames[d]=0;
+  }else if(frames[d]>=10){
+    gap[d]+=0.1
+    obj.style.transform="scaleX("+gap[d]+")";
+    frames[d]+=1
+  }else{
+    gap[d]-=0.1
+    obj.style.transform="scaleX("+gap[d]+")";
+    frames[d]+=1
+  }
+}
+
+
+
+//陣列洗牌函式
+function shuffle(array){
+  for(i=0;i<array.length;i++){
+    let seed=Math.floor(Math.random()*array.length);
+    let temp=array[i];
+    array[i]=array[seed];
+    array[seed]=temp;
+  }
+  return array;
+}
+</script>
